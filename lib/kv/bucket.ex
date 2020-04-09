@@ -21,4 +21,13 @@ defmodule Gensup.KV.Bucket do
   def put(bucket, key, value) do
     Agent.update(bucket, &Map.put(&1, key, value))
   end
+
+  @doc """
+  Delete key from bucket.
+
+  Returns the current value of key if it exists.
+  """
+  def delete(bucket, key) do
+    Agent.get_and_update(bucket, &Map.pop(&1, key))
+  end
 end
