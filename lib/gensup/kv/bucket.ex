@@ -31,7 +31,9 @@ defmodule Gensup.KV.Bucket do
 
   The second argument happens on the Agent server. Everything else
   happens on the client. If you perform expensive computations on the
-  server, it can block other clients from using that server. Example:
+  server, it can block other clients from using that server.
+
+  Example:
 
   ```
   def delete(bucket, key) do

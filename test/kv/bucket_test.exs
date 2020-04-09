@@ -3,7 +3,16 @@ defmodule Gensup.KV.BucketTest do
   alias Gensup.KV
 
   setup do
-    {:ok, bucket} = KV.Bucket.start_link([])
+    # {:ok, bucket} = KV.Bucket.start_link([])
+    #
+    # From the docs:
+    #
+    #   "When starting processes during your tests, we should always
+    #   prefer to use start_supervised!"
+    #
+    # It guarantees that the process will be shut down before the next
+    # test starts.
+    bucket = start_supervised!(KV.Bucket)
     %{bucket: bucket}
   end
 
